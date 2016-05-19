@@ -8,7 +8,8 @@ Installation guide for a raspberry pi, these commands require sudo. the setup.sh
 ### Download
 If git is not installed.
 ```bash
-apt-get install git
+apt-get -y update
+apt-get -y install git
 ```
 Then just clone this repository.
 ```bash
@@ -35,7 +36,7 @@ Change directory into the repository
 ```bash
 cd mppcControl
 ```
-Move the NGINX config file to the install location, and remove the default www folder location.
+Copy the NGINX config file to the install location, and remove the default www folder location.
 ```bash
 cp ./mppcControl /etc/nginx/sites-available/mppcControl
 ln -s /etc/nginx/sites-available/mppcControl /etc/nginx/sites-enabled/mppcControl
@@ -48,7 +49,7 @@ mkdir /var/www/mppcControl/
 ### Copy Files
 If you are updating, or installing after changes were made, clear the directory.
 ```bash
-rm -rf /var/www/mppcControl
+rm -rf /var/www/mppcControl/*
 ```
 
 Then just copy the files over, and change mode.
@@ -74,13 +75,13 @@ nano /etc/rc.local
 Add the following line before "exit 0"
 
 ```
-/usr/local/bin/forever start /var/www/mppcControl/server.js
+/var/www/mppcControl/node_modules/forever/bin/forever start /var/www/mppcControl/server.js
 ```
 Then we restart nginx, and start our server script.
 
 ```bash
 service nginx restart
-forever start /var/www/mppcControl/server.js
+/var/www/mppcControl/node_modules/forever/bin/forever start /var/www/mppcControl/server.js
 ```
 
 ## Using the webpage

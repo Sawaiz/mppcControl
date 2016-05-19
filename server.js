@@ -1,4 +1,7 @@
 //Nodejs server contoling GPIO for HV/LV
+//Config.js file shas all the sttings
+var config = require('./config');
+
 var mosiPin = 5;
 var sclkPin = 6;
 var powerOnPin = 21;
@@ -28,16 +31,18 @@ var powerOkPin = 20;
 //   ["FH4",53.57,27]
 // ];
 //config for sawaizTestPi
-var positionList = [
-  ["FV1",53.57,07],
-  ["FV2",53.57,12],
-  ["FV3",53.57,13],
-  ["FV4",53.57,19],
-  ["FH1",53.57,16],
-  ["FH2",53.57,26],
-  ["FH3",53.57,00],
-  ["FH4",53.57,00]
-];
+// var positionList = [
+//   ["FV1",53.57,07],
+//   ["FV2",53.57,12],
+//   ["FV3",53.57,13],
+//   ["FV4",53.57,19],
+//   ["FH1",53.57,16],
+//   ["FH2",53.57,26],
+//   ["FH3",53.57,00],
+//   ["FH4",53.57,00]
+// ];
+
+var positionList = config.positionList;
 
 //**END CONFIGURATION**//
 console.log("Server started");
