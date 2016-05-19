@@ -1,12 +1,12 @@
-#Server Configuration for voltageControl
+#Server Configuration for mppcControl
 
 server {
 listen 80;
-server_name voltageControl;
+server_name mppcControl;
 
 #Configures the publicly served root directory
 #Configures the index file to be served
-root /var/www/voltageControl;
+root /var/www/mppcControl;
     index index.html index.htm;
 
 location /ws {
