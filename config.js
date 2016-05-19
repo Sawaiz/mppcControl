@@ -1,5 +1,7 @@
 var config = {};
 
+config.serverUrl= "10.50.0.112"
+
 config.mosiPin = 5;
 config.sclkPin = 6;
 config.powerOnPin = 21;

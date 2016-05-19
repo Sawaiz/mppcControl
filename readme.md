@@ -15,6 +15,8 @@ Then just clone this repository.
 ```bash
 git clone https://github.com/Sawaiz/mppcControl
 ```
+*config.json* needs to be edited to match your configuration. every time the server starts, it looks in here to decide what GPIO are available.
+
 ### Packages
 Update cache for apt-get so we can install the nodejs that works for raspberry pi 2 (arm v7).
 
@@ -47,9 +49,11 @@ Make the new *mppcControl* directory.
 mkdir /var/www/mppcControl/
 ```
 ### Copy Files
-If you are updating, or installing after changes were made, clear the directory.
+If you are updating, or installing after changes were made, clear the directory, save the node packages.
 ```bash
-rm -rf /var/www/mppcControl/*
+cd /var/www/mppcControl
+shopt -s extglob
+rm -rf !(node_modules)
 ```
 
 Then just copy the files over, and change mode.
