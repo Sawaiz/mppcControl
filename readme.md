@@ -1,4 +1,3 @@
-MPPC Interface Board.
-=====================
-Communictes iwth the sensor board in order to provide it hte neccacry voltage and pull signal down. Also allows led 
-testing and temprature readout.
+MPPC Control Web Interface
+==========================
+The *app* is written in mostly javascript, and hopefully is able to work in a horoku like deployment structure using Dokku, meaning the deployment is very easy. 
