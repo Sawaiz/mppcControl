@@ -15,18 +15,19 @@ Then just clone this repository.
 git clone https://github.com/Sawaiz/mppcControl
 ```
 ### Packages
-Update cache for apt-get so we can install the nodejs that works for raspberry pi.
+Update cache for apt-get so we can install the nodejs that works for raspberry pi 2 (arm v7).
 
 ```bash
 curl -sLS https://apt.adafruit.com/add | sudo bash
 ```
 
-Then, after a general update, we install nginx (webserver), nodejs (server side javascript), and npm (node package manager).
+Then, after a general update, we install nginx (webserver), node (nodejs server side javascript), and npm (node package manager).
 
 ```bash
 apt-get -y update
+apt-get -y upgrade
 apt-get -y install nginx
-apt-get -y install nodejs
+apt-get -y install node
 apt-get -y install npm
 ```
 ### NGINX setup
@@ -36,13 +37,13 @@ cd mppcControl
 ```
 Move the NGINX config file to the install location, and remove the default www folder location.
 ```bash
-mv ./mppcControl /etc/nginx/sites-available/mppcControl
+cp ./mppcControl /etc/nginx/sites-available/mppcControl
 ln -s /etc/nginx/sites-available/mppcControl /etc/nginx/sites-enabled/mppcControl
 rm /etc/nginx/sites-available/default
 ```
 Make the new *mppcControl* directory.
 ```bash
-mkdir /var/www/voltageControl/
+mkdir /var/www/mppcControl/
 ```
 ### Copy Files
 If you are updating, or installing after changes were made, clear the directory.
@@ -53,12 +54,13 @@ rm -rf /var/www/mppcControl
 Then just copy the files over, and change mode.
 
 ```bash
-cp ./* /var/www/mppcControl
+cp -R ./* /var/www/mppcControl
 chmod -R 755 /var/www/mppcControl/*
 ```
 
 Change to the mppcControl directory, and install node dependencies. This looks in the package.json files and installs the required packages.
 ```bash
+cd /var/www/mppcControl
 npm install
 ```
 
