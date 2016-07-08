@@ -1,7 +1,5 @@
 var config = {};
 
-config.serverUrl= "10.50.0.112"
-
 config.mosiPin = 5;
 config.sclkPin = 6;
 config.powerOnPin = 21;
@@ -9,29 +7,29 @@ config.powerOkPin = 20;
 
 //[Name, Datasheet Voltage, GPIO PIN Number, Serial No.?]
 //config for hvpia
-// config.positionList = [
-//   ["FV1",53.57,22],
-//   ["FV2",53.57,23],
-//   ["FV3",53.57,24],
-//   ["FV4",53.57,10],
-//   ["FH1",53.57,09],
-//   ["FH2",53.57,25],
-//   ["FH3",53.57,11],
-//   ["FH4",53.57,08]
-// ];
-//config for hvPib
-// config.positionList = [
-//   ["FV1",53.57,02],
-//   ["FV2",53.57,03],
-//   ["FV3",53.57,04],
-//   ["FV4",53.57,14],
-//   ["FH1",53.57,15],
-//   ["FH2",53.57,17],
-//   ["FH3",53.57,18],
-//   ["FH4",53.57,27]
-// ];
+config.hvpiaPositionList = [
+  ["FV1",53.57,22],
+  ["FV2",53.57,23],
+  ["FV3",53.57,24],
+  ["FV4",53.57,10],
+  ["FH1",53.57,09],
+  ["FH2",53.57,25],
+  ["FH3",53.57,11],
+  ["FH4",53.57,08]
+];
+// config for hvPib
+config.hvPibPositionList = [
+  ["FV1",53.57,02],
+  ["FV2",53.57,03],
+  ["FV3",53.57,04],
+  ["FV4",53.57,14],
+  ["FH1",53.57,15],
+  ["FH2",53.57,17],
+  ["FH3",53.57,18],
+  ["FH4",53.57,27]
+];
 //config for sawaizTestPi
-config.positionList = [
+config.sawaizTestPiPositionList = [
   ["FV1",53.57,07],
   ["FV2",53.57,12],
   ["FV3",53.57,13],

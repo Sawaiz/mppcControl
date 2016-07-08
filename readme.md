@@ -1,9 +1,17 @@
-MPPC Control Web Interface
-==========================
-The *app* is written in mostly javascript, and hopefully will use a deployment engine at some point. Currently installation is done with a bash script.
+# MPPC Control
+The *app* is written in mostly javascript, and hopefully will use a deployment engine at some point. Currently installation is done with a makefile. It is intedned to provide a web interface for controlling [MPPC interface](https://github.com/Sawaiz/mppcInterface) modules.
 
 ## Install
-Installation guide for a raspberry pi, these commands require sudo. the setup.sh script will do the same.
+Installation guide for a raspberry pi, these commands require sudo, the setup.sh script creates users, changes hostname. The following command show a quick install, manual install instuctions are below.
+
+```bash
+apt-get -y update
+apt-get -y install git
+git clone https://github.com/Sawaiz/mppcControl
+cd mppcControl
+sudo make all
+```
+Will do everything shown below, and should give a working webpage.
 
 ### Download
 If git is not installed.
@@ -17,20 +25,24 @@ git clone https://github.com/Sawaiz/mppcControl
 ```
 *config.json* needs to be edited to match your configuration. every time the server starts, it looks in here to decide what GPIO are available.
 
+
 ### Packages
-Update cache for apt-get so we can install the nodejs that works for raspberry pi 2 (arm v7).
+Download files so we can install node (nodejs server side javascript), directly that works for raspberry pi 2 (arm v7).
 
 ```bash
-curl -sLS https://apt.adafruit.com/add | sudo bash
+wget https://nodejs.org/dist/v4.4.7/node-v4.4.7-linux-armv7l.tar.xz
+tar -xf node-v4.4.7-linux-armv7l.tar.xz
+cd node-v4.4.7-linux-armv7l
+cp -R * /usr/local/
 ```
 
-Then, after a general update, we install nginx (webserver), node (nodejs server side javascript), and npm (node package manager).
+Then, after a general update, we install nginx (webserver), postgresql (SQL service) and npm (node package manager).
 
 ```bash
 apt-get -y update
 apt-get -y upgrade
 apt-get -y install nginx
-apt-get -y install node
+apt-get -y install postgresql
 apt-get -y install npm
 ```
 ### NGINX setup
@@ -90,4 +102,4 @@ service nginx restart
 
 ## Using the webpage
 
-The configuration is stored in (config file doesn't exist yet, gpio's are hardcoded in assets/js/gpio.js) sets the gpio and name shown on the webpage as well as the associated image.
+The configuration is stored in config.js sets the gpio and name shown on the webpage as well as the associated image.
